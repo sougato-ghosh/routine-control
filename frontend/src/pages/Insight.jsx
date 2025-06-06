@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import api from '../api';
 import Note from '../components/Note'; // This will be modified later
-import '../styles/Insight.css'; // To be created
+import '../styles/Insight.css'; // Ensure this file is created or updated
 
 function Insight() {
     const [notes, setNotes] = useState([]);
@@ -61,6 +62,14 @@ function Insight() {
 
     return (
         <div className="insight-container">
+            {/* Header for navigation */}
+            <header className="insight-header">
+                <Link to="/" className="btn btn-secondary">
+                    Home
+                </Link>
+            </header>
+
+            {/* Main content of the Insight page */}
             <h1>Monthly Insight</h1>
             <div className="insight-summary">
                 <h2>Total for Current Month: {totalAmount.toFixed(2)}</h2>

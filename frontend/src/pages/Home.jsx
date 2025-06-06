@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import api from "../api";
-import "../styles/Home.css";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "../styles/Home.css"; // Ensure this file exists or is created
+import { Link } from "react-router-dom"; // Import Link
 
 const Home = () => {
   const [notes, setNotes] = useState([]);
@@ -21,7 +21,7 @@ const Home = () => {
   const [otherDate, setOtherDate] = useState(new Date().toISOString().split('T')[0]); // Default to today's date
   const [otherAmount, setOtherAmount] = useState("");
 
-  const navigate = useNavigate(); // Initialize navigate
+  // const navigate = useNavigate(); // No longer needed for the Insight button link
 
   useEffect(() => {
     getNotes();
@@ -62,30 +62,28 @@ const Home = () => {
         });
   };
 
-  const handleInsightClick = () => {
-    navigate("/insight"); // Navigate to /insight route
-  };
+  // handleInsightClick is no longer needed as <Link> will handle navigation.
 
   return (
     <div className="container">
-      <header className="header">
-        <button className="icon-button">
-          <span className="material-icons">menu</span>
-        </button>
-        {/* Updated button to call handleInsightClick */}
-        <button className="btn btn-secondary" onClick={handleInsightClick}>
+      {/* The menu button is now globally handled by App.jsx */}
+      {/* The header in Home.jsx will now only contain the "Insight" button and potentially other page-specific controls. */}
+      {/* Adjust padding or margins if the fixed menu button from App.jsx overlaps. */}
+      <header className="home-header"> {/* Renamed to avoid conflict if "header" is too generic */}
+        {/* "Insight" button using Link component */}
+        <Link to="/insight" className="btn btn-secondary">
           Insight
-        </button>
+        </Link>
       </header>
 
-      <main>
+      <main className="home-main-content"> {/* Added a class for potentially specific main content styling */}
         {["Lunch", "Dinner"].map((meal) => (
           <section key={meal}>
             <h2>{meal}</h2>
             <div className="preset-buttons">
               {[60, 65, 70].map((amt) => (
                 <button key={amt} className="btn amount-btn" onClick={() => createNote(meal, new Date().toISOString().split('T')[0], amt)}>
-                  {amt}
+                  {amt} {/* Ensure this button also gets generic .btn styles if not specific .amount-btn styles */}
                 </button>
               ))}
             </div>
@@ -93,7 +91,7 @@ const Home = () => {
               <input
                 type="number"
                 placeholder="Enter Amount"
-                className="input-field"
+                className="input-field" // Assuming .input-field styles exist or will be added
                 value={meal === "Lunch" ? lunchAmount : dinnerAmount}
                 onChange={(e) => meal === "Lunch" ? setLunchAmount(e.target.value) : setDinnerAmount(e.target.value)}
               />
@@ -118,7 +116,7 @@ const Home = () => {
 
         <section>
           <h2>Others</h2>
-          <div className="others-input">
+          <div className="others-input"> {/* Assuming .others-input styles exist or will be added */}
             <input
               type="text"
               placeholder="Enter Reference"

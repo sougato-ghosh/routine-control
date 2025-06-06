@@ -2,30 +2,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #121212;
-  color: #E0E0E0;
+  background-color: #121212; /* Existing dark theme background */
+  color: #E0E0E0; /* Existing dark theme text color */
 }
 
+/* Container for the entire Home page content */
+/* The global menu button from App.jsx is fixed at top: 15px, left: 15px.
+   This padding ensures content (especially the header) doesn't start underneath it. */
 .container {
   padding: 20px;
-  max-width: 600px;
-  margin: auto;
+  padding-top: 60px; /* Increased top padding to clear the fixed menu button from App.jsx */
+  max-width: 600px; /* Existing max-width */
+  margin: auto; /* Existing margin auto */
 }
 
-.header {
+/* Styles for the header within Home.jsx, now named .home-header */
+.home-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Aligns children (Insight button) to the right */
   align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #333;
-  margin-bottom: 30px;
+  padding-bottom: 20px; /* Existing padding */
+  border-bottom: 1px solid #333; /* Existing border */
+  margin-bottom: 30px; /* Existing margin */
+  /* No need for specific left padding for the menu button as it's global */
 }
 
+/* Material Icons default styling (already present) */
 .material-icons {
   font-size: 28px;
   color: #ccc;
 }
 
+/* Icon button styling (already present, was for the old Home.jsx menu button) */
+/* This can be kept if there are other icon buttons, or removed if not used. */
 .icon-button {
   background: none;
   border: none;
@@ -62,33 +71,39 @@ h2 {
   color: #757575;
 }
 
+/* General button styling (already present) */
 .btn {
   padding: 10px 15px;
   border-radius: 8px;
-  background-color: #333;
+  background-color: #333; /* Default button background */
   color: #e0e0e0;
   font-weight: 500;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none; /* Added for <Link> components styled as buttons */
 }
 
 .btn:hover {
   background-color: #424242;
 }
 
+/* Secondary button styling (already present) */
+/* Used for the "Insight" Link component */
 .btn-secondary {
   background-color: transparent;
   border: 1px solid #4f4f4f;
+  color: #e0e0e0; /* Ensure text color is set for secondary buttons */
 }
 
 .btn-secondary:hover {
   background-color: #2c2c2c;
 }
 
+/* Amount button styling (already present) */
 .amount-btn {
   background-color: #2c2c2c;
-  border: 1px solid #4f4f4f;
+  border: 1px solid #4f4f4f; /* Existing style had this, so it's slightly different than btn-secondary */
 }
 
 .amount-btn:hover {
@@ -106,4 +121,9 @@ h2 {
   display: flex;
   justify-content: flex-end;
   margin-top: 40px;
+}
+
+/* Added class from Home.jsx for main content area, if specific styling is needed later */
+.home-main-content {
+  /* No specific styles needed for now, inherits .container padding indirectly */
 }

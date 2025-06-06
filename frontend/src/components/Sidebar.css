@@ -1,0 +1,123 @@
+/* Sidebar base style */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full viewport height */
+  width: 250px; /* Standard width for a sidebar */
+  background-color: #1f2937; /* Equivalent to Tailwind's bg-gray-800 */
+  padding: 1.5rem; /* p-6 */
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%); /* Hidden by default */
+  transition: transform 0.3s ease-in-out;
+  z-index: 50; /* High z-index to be on top */
+  color: #d1d5db; /* text-gray-300 */
+}
+
+/* Sidebar open state */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Sidebar Header (for user profile) */
+.sidebar-header {
+  margin-bottom: 1.5rem; /* mb-6 */
+  padding-bottom: 1rem; /* pb-4 */
+  border-bottom: 1px solid #374151; /* border-b border-gray-700 */
+}
+
+.sidebar-header h2 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: #f9fafb; /* text-gray-50 */
+}
+
+/* Sidebar navigation links */
+.sidebar-nav {
+  flex-grow: 1; /* Allows nav to take available space */
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem; /* py-3 px-4 (Tailwind often uses slightly different padding for x and y) */
+  border-radius: 0.375rem; /* rounded-md */
+  text-decoration: none;
+  color: #d1d5db; /* text-gray-300 */
+  font-weight: 500; /* font-medium */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #374151; /* hover:bg-gray-700 */
+  color: #f9fafb; /* hover:text-gray-50 */
+}
+
+/* Icons within sidebar links */
+.sidebar-link .material-icons {
+  margin-right: 0.75rem; /* mr-3 */
+  font-size: 1.5rem; /* text-2xl (approximate for Material Icons) */
+  color: #9ca3af; /* text-gray-400 */
+}
+
+.sidebar-link:hover .material-icons {
+  color: #d1d5db; /* hover:text-gray-300 */
+}
+
+/* Close button */
+.sidebar .close-btn {
+  position: absolute;
+  top: 1rem; /* p-4 equivalent for positioning */
+  right: 1rem; /* p-4 equivalent for positioning */
+  background: none;
+  border: none;
+  color: #9ca3af; /* text-gray-400 */
+  font-size: 1.875rem; /* text-3xl */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sidebar .close-btn:hover {
+  color: #f9fafb; /* hover:text-gray-50 */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 40; /* Below sidebar but above other content */
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* User profile specific styling (if needed, adjust from previous CSS) */
+.user-profile { /* Renamed from sidebar-header for consistency if used in JSX */
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #374151; /* border-gray-700 */
+  text-align: left; /* Usually text is left aligned in sidebars */
+}
+
+.user-profile h2 {
+  margin: 0;
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: #f9fafb; /* text-gray-50 */
+}
