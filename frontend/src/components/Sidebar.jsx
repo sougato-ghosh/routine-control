@@ -10,7 +10,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         {/* User name will be displayed here */}
-        <h2>User Name</h2>
+        <h2>USER</h2>
       </div>
       <button onClick={toggleSidebar} className="close-btn">
         {/* Using a text 'X' or a proper icon font/SVG would go here */}
