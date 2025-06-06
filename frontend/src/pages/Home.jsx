@@ -145,10 +145,6 @@ const Home = () => {
           </div>
         </section>
       </main>
-
-      <footer className="footer">
-        <button className="btn btn-secondary">UNDO</button>
-      </footer>
     </div>
   );
 };
