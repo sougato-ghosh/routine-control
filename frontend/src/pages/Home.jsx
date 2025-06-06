@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../api";
 import "../styles/Home.css";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Home = () => {
   const [notes, setNotes] = useState([]);
@@ -19,6 +20,8 @@ const Home = () => {
   const [otherReference, setOtherReference] = useState("");
   const [otherDate, setOtherDate] = useState(new Date().toISOString().split('T')[0]); // Default to today's date
   const [otherAmount, setOtherAmount] = useState("");
+
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     getNotes();
@@ -59,13 +62,20 @@ const Home = () => {
         });
   };
 
+  const handleInsightClick = () => {
+    navigate("/insight"); // Navigate to /insight route
+  };
+
   return (
     <div className="container">
       <header className="header">
         <button className="icon-button">
           <span className="material-icons">menu</span>
         </button>
-        <button className="btn btn-secondary">Insight</button>
+        {/* Updated button to call handleInsightClick */}
+        <button className="btn btn-secondary" onClick={handleInsightClick}>
+          Insight
+        </button>
       </header>
 
       <main>

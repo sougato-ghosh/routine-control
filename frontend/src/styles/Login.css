@@ -1,0 +1,21 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.register-link-container {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.register-link-container a {
+  color: #007bff; /* Or your app's primary link color */
+  text-decoration: none;
+}
+
+.register-link-container a:hover {
+  text-decoration: underline;
+}

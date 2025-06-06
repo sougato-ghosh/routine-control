@@ -1,0 +1,55 @@
+.insight-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.insight-summary {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.insight-summary h2 {
+    margin: 0;
+}
+
+.btn-activate-delete {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-activate-delete:hover {
+    background-color: #0056b3;
+}
+
+.notes-list-container {
+    margin-top: 20px;
+}
+
+.notes-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust based on content */
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.notes-header span, .note-item span { /* Assuming .note-item will be used in Note.jsx */
+    padding: 5px;
+}
+
+.notes-body {
+    /* Styles for the notes list itself */
+}
+
+/* Add more styles as needed for Note.jsx single line display later */

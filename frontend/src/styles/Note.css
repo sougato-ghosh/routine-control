@@ -1,33 +1,90 @@
+/* Previous styles for .note-container, .note-title, etc. might exist.
+   We are now focusing on .note-item-row for the Insight page.
+   If Note.jsx is used elsewhere with the old structure, this needs careful conditional styling or different components.
+   For this task, we assume Note.jsx is being adapted for the Insight page's single-line requirement. */
+
+.note-item-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Title, Date, Amount, Action */
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee; /* Light border for separation */
+}
+
+.note-item-row span {
+    padding: 0 5px; /* Padding within each cell */
+    overflow: hidden; /* Prevent content overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+    white-space: nowrap; /* Keep content on a single line */
+}
+
+.note-item-row .note-title {
+    font-weight: 500;
+}
+
+.note-item-row .note-amount {
+    text-align: right; /* Align amount to the right */
+}
+
+.note-item-row .delete-button {
+    padding: 5px 10px;
+    background-color: #dc3545; /* Red color for delete */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    justify-self: center; /* Center button in its grid cell */
+}
+
+.note-item-row .delete-button:hover:not(:disabled) {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+.note-item-row .delete-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* If .note-container is still used by Home.jsx, those styles should remain,
+   or Home.jsx should use a different Note component or styling.
+   For now, this focuses on the new requirement. */
+
+/* Keeping original styles for .note-container and its children if they are still needed by Home.jsx */
 .note-container {
-  padding: 10px;
-  margin: 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
 }
 
-.note-title {
-  color: #333;
+.note-container .note-title { /* Scoping to .note-container */
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.note-content {
-  color: #666;
+.note-container .note-content { /* Scoping to .note-container */
+    font-size: 1em;
+    margin-bottom: 10px;
+    white-space: pre-wrap; /* Keep formatting of content */
 }
 
-.note-date {
-  color: #999;
-  font-size: 0.8rem;
+.note-container .note-date { /* Scoping to .note-container */
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
 }
 
-.delete-button {
-  background-color: #f44336; /* Red */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.note-container .delete-button { /* Scoping to .note-container */
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.delete-button:hover {
-  background-color: #d32f2f; /* Darker red */
+.note-container .delete-button:hover { /* Scoping to .note-container */
+    background-color: #e60000;
 }

@@ -5,6 +5,7 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
+import Insight from "./pages/Insight"; // Import the new Insight component
 
 function Logout() {
   localStorage.clear()
@@ -25,6 +26,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/insight" // Add new route for /insight
+          element={
+            <ProtectedRoute>
+              <Insight />
             </ProtectedRoute>
           }
         />
