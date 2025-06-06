@@ -20,6 +20,14 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# MongoDB Settings
+# Load from environment variables, with defaults for local development
+MONGO_DB_URI = os.getenv('MONGO_DB_URI', 'mongodb://localhost:27017/')
+MONGO_DB_NAME = os.getenv('MONGO_DB_NAME', 'mydjangomongodb')
+# It's good practice to also remove or comment out the old DATABASES setting for SQLite
+# to avoid confusion, but ensure Django doesn't break if some part still expects it
+# before full migration. For now, let's comment it out.
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -46,13 +54,15 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
 }
 
+# Custom Authentication Backend for MongoDB
+AUTHENTICATION_BACKENDS = [
+    'api.auth_backends.MongoDBAuthenticationBackend',
+    # 'django.contrib.auth.backends.ModelBackend', # If Django admin access with Django users is needed
+]
+
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
@@ -95,12 +105,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation

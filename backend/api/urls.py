@@ -1,8 +1,10 @@
 from django.urls import path
-from . import views
+# Ensure views are correctly imported based on the previous step
+from .views import CreateUserView, NoteListCreateView, NoteDetailView, LoginView
 
 urlpatterns = [
-    path("notes/", views.NoteListCreate.as_view(), name="note-list"),
-    path('notes/update/<int:pk>/', views.NoteUpdate.as_view(), name='update-note'),
-    path("notes/delete/<int:pk>/", views.NoteDelete.as_view(), name="delete-note"),
+    path("user/register/", CreateUserView.as_view(), name="register"),
+    path("token/", LoginView.as_view(), name="login"), # New login path
+    path("notes/", NoteListCreateView.as_view(), name="note-list-create"),
+    path("notes/<str:pk>/", NoteDetailView.as_view(), name="note-detail"), # pk is MongoDB _id string
 ]
