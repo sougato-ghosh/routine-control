@@ -7,16 +7,7 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Insight from "./pages/Insight"; // Import the new Insight component
 import Sidebar from "./components/Sidebar"; // Import Sidebar
-
-function Logout() {
-  localStorage.clear();
-  return <Navigate to="/login" />
-}
-
-function RegisterAndLogout() {
-  localStorage.clear()
-  return <Register />
-}
+import Logout from "./pages/Logout"; // Import Logout component
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -87,7 +78,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
